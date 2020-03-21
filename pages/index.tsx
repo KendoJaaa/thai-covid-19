@@ -1,9 +1,26 @@
 
 import { NextPage } from 'next';
 import axios from 'axios'
+import TotalCasesChart from '../components/TotalCasesChart'
 
-const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => (
-  <h1>Hello world! - user agent: {userAgent}</h1>
+type Data = {
+  date: string,
+  confirmed: number
+  recovered: number
+  inhospital: number
+  died: number  
+  crosscheck: number  
+  new: number  
+  critical: number
+}
+
+const Home: NextPage<{ dataSet: Data[] }> = ({ dataSet }) => (
+  <>
+  <h1>ข้อมูล เกี่ยวกับ corona</h1>
+  <TotalCasesChart 
+    dataSet={dataSet}
+  />
+  </>
 );
 
 Home.getInitialProps = async ({ req }) => {
@@ -13,10 +30,9 @@ Home.getInitialProps = async ({ req }) => {
     timeout: 1000,
   });
   const response = await request.get('')
-  console.log('kendo jaa', response.data)
+  const dataSet = response.data.rows
   
-  const userAgent = req ? req.headers['user-agent'] || '' : navigator.userAgent;
-  return { userAgent };
+  return { dataSet };
 };
 
 export default Home;

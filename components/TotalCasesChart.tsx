@@ -29,7 +29,7 @@ export default function TotalCasedChart ({ dataSet }: Props) {
   })
 
 
-  const dataForChart = [
+  const dataForChart: Array<any> = [
     {
       "id": "japan",
       "color": "hsl(346, 70%, 50%)",

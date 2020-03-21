@@ -4,7 +4,7 @@ import Chart from "./Chart";
 
 type Props = {};
 
-const MyResponsiveBar: FC<Props> = () => {
+const NewlyInfectedChart: FC<Props> = () => {
   const data = [
     {
       country: "AD",
@@ -208,3 +208,6 @@ const MyResponsiveBar: FC<Props> = () => {
     </Chart>
   );
 };
+
+
+export default NewlyInfectedChart
